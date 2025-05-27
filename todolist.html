@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO LIST</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="input">
+        <input type="text" id="inputtxt" placeholder="Add a new task...." />
+        <button id="txtadd">ADD</button>
+      </div>
+      <ul id="listadd"></ul>
+    </div>
+    <script>
+      let inputtxt = document.getElementById("inputtxt");
+      let txtadd = document.getElementById("txtadd");
+      let listadd = document.getElementById("listadd");
+      txtadd.addEventListener("click", () => {
+        const addtxt = inputtxt.value.trim();
+        if (addtxt === "") return;
+        const li = document.createElement("li");
+        li.textContent = addtxt;
+        li.addEventListener("click", () => {
+          li.classList.toggle("completed");
+        });
+        const btndel = document.createElement("button");
+        btndel.textContent = "Delete";
+        btndel.classList.add("btndel");
+        btndel.addEventListener("click", () => {
+          li.remove();
+        });
+        li.appendChild("btndel");
+        listadd.appendChild("li");
+        inputtxt.value = "";
+      });
+    </script>
+  </body>
+</html>
+
