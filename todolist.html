@@ -4,10 +4,81 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TO DO LIST</title>
-    <style></style>
+    <style>
+        body{
+            font-family:sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: antiquewhite;
+            padding: 50px;
+        }
+        .container{
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 10px gray;
+            width: 550px;
+            background-color: rgb(218, 166, 55);
+          }
+        .input{
+          display: flex;
+          
+        }
+        h1{
+          text-align: center;
+          margin-bottom: 20px;
+
+        }
+        #inputtxt{
+          border: 2px solid #ccc;
+          border-radius: 5px;
+          height: 30px;
+          flex: 1;
+        }
+        #txtadd{
+          color: black;
+          background-color: beige;
+          margin-left: 10px;
+          border-radius: 5px;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+        }
+        #txtadd:hover{
+          background:blanchedalmond;
+          color: brown;
+        }
+        #listadd{
+          list-style: none;
+          padding: 0;
+        }
+        li{
+          display: flex;
+          background-color: #ccc;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 10px;
+          padding: 10px;
+        }
+        li.completed{
+          text-decoration: lightblue line-through;
+        }
+        button.btndel{
+          color:black;
+          border: none;
+          border-radius: 5px;
+          background-color: brown;
+          cursor: pointer;
+        }
+        button.btndel:hover{
+          background-color: coral;
+        }
+
+    </style>
   </head>
   <body>
     <div class="container">
+      <h1>TO-DO-LIST</h1>
       <div class="input">
         <input type="text" id="inputtxt" placeholder="Add a new task...." />
         <button id="txtadd">ADD</button>
@@ -27,16 +98,16 @@
           li.classList.toggle("completed");
         });
         const btndel = document.createElement("button");
-        btndel.textContent = "Delete";
+        btndel.textContent = "DELETE";
         btndel.classList.add("btndel");
-        btndel.addEventListener("click", () => {
+        btndel.addEventListener("click", (e) => {
+        e.stopPropagation();
           li.remove();
         });
-        li.appendChild("btndel");
-        listadd.appendChild("li");
+        li.appendChild(btndel);
+        listadd.appendChild(li);
         inputtxt.value = "";
       });
     </script>
   </body>
 </html>
-
